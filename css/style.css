@@ -40,6 +40,7 @@ p {
   font-size: 16px;
   line-height: 1.7;
   margin: 0 0 16px 0;
+
 }
 
 h1 {
@@ -345,10 +346,10 @@ h3 {
 
 /* GALERIA ELABORACION */
 .gallery{
-      width: min(var(--maxW), 92vw);
-      margin: 0 auto;
-      padding: 12vh 0;
-    }
+  width: min(var(--maxW, 1200px), 92vw);
+  margin: 0 auto;
+  padding: 12vh 0;
+}
 
     .track{
       position: relative;
@@ -368,8 +369,8 @@ h3 {
       width: 100%;
       height: auto;
       display:block;
-      box-shadow: var(--shadow);
-      background:#f2f2f2;
+      background: none; /* Eliminar fondo gris */
+      box-shadow: none; /* Eliminar sombra */
     }
 
 /* ===== RESPONSIVE ===== */
@@ -453,12 +454,11 @@ h3 {
 }
 
 /* GIFS */
-.gif-media{
+.gif-media {
   position: relative;
   width: 100%;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  background:#f2f2f2;
+  background: transparent; /* 👈 IMPORTANTE */
 }
 
 /* Poster visible por defecto */
@@ -491,6 +491,29 @@ h3 {
   transition: opacity 200ms ease;
 }
 
+.caption{
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* El párrafo NO se ve por defecto */
+.caption p{
+  display: none;
+  margin: 10%;
+  font-size: 0.95rem;
+  line-height: 1.4;
+ 
+  color: #f2f2f2;
+}
+
+/* Hover: ocultamos h2 y mostramos p */
+.gif-card:hover .caption h2{
+  display: none;
+}
+
+.gif-card:hover .caption p{
+  display: block;
+}
 
 /* PÁGINA DE CATÁLOGO */
 
@@ -682,4 +705,9 @@ body:not(.home) .nav-menu--light a {
 .btn-ver-todos:hover {
   background-color: var(--black);
   color: #ffffff;
+}
+
+/* Blanco para el menú en index.html */
+body.home .nav-menu--light a {
+  color: #ffffff; /* Blanco para el menú en index.html */
 }
