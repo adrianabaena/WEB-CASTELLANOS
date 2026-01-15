@@ -553,45 +553,60 @@ h3 {
 }
 
 
-/* elaboracion */
- :root{
-  --maxW: 720px;
-  --overlap: 150px;      /* solape entre imágenes */
-  --activeScale: 1.07;   /* cuánto crece en el centro */
-  --baseScale: 0.96;     /* escala cuando no está centrada */
-  --shadow: 0 18px 50px rgba(0,0,0,.14);
+/* elaboracion */.gallery{
+    width:100%;
+    min-height:200vh;
+    display:flex;
+    justify-content:center;
+    padding:20vh 0;
+  }
+
+  /* COLUMNA */
+  .stack{
+    width:800px;
+    position:relative;
+  }
+
+  /* TARJETAS */
+  .item{
+    position:relative;
+    margin:120px auto;
+    width:60%;
+    transform:scale(0.9);
+    opacity:0.7;
+    will-change: transform, opacity;
+    overflow:hidden;
+  }
+
+  /* VARIACIONES COLLAGE */
+  .item.left{ margin-left:0; margin-right:auto; }
+  .item.right{ margin-left:auto; margin-right:0; }
+  .item.center{ margin-left:auto; margin-right:auto; }
+
+  .item img{
+    width:100%;
+    display:block;
+    box-shadow:0 20px 60px rgba(0,0,0,.15);
+  }
+
+  /* TEXTO CENTRADO */
+  .caption{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  background:rgba(0,0,0,0.15);
+  pointer-events:none;
 }
+.caption h2{
+  margin:0;
+  color:#fff;
 
-.gallery{
-  width: min(var(--maxW), 92vw);
-  margin: 0 auto;
-  padding: 12vh 0;
-}
-
-.track{
-  position: relative;
-}
-
-.card{
-  margin: 0;
-  position: relative;
-
-  /* solape */
-  margin-top: calc(var(--overlap) * -1);
-
-  transform: scale(var(--baseScale));
-  opacity: 0.85;
-  will-change: transform, opacity;
-}
-
-.card:first-child{
-  margin-top: 0;
-}
-
-.card img{
-  width: 100%;
-  height: auto;
-  display: block;
-  box-shadow: var(--shadow);
-  background: #f2f2f2;
+  
+  font-weight:300;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
 }

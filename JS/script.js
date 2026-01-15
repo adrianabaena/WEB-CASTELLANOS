@@ -13,58 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // carrousel historia
-// --- Galería Artesanía (stack + zoom al centro) ---
-if (document.querySelector(".gallery") && window.gsap && window.ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
+const items = document.querySelectorAll(".item");
 
-  const cards = gsap.utils.toArray(".gallery .card");
-
-  const ACTIVE_SCALE =
-    parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--activeScale")) || 1.07;
-
-  const BASE_SCALE =
-    parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--baseScale")) || 0.96;
-
-  const clamp = (min, max, v) => Math.min(max, Math.max(min, v));
-
-  // Rotación leve (opcional, estilo editorial)
-  cards.forEach((card, i) => {
-    const rot = (i % 2 === 0 ? -1 : 1) * gsap.utils.random(0.6, 1.4);
-    gsap.set(card, { rotate: rot, transformOrigin: "50% 55%" });
-  });
-
-  function updateCards() {
-    const viewportCenter = window.scrollY + window.innerHeight / 2;
-
-    cards.forEach((card) => {
-      const rect = card.getBoundingClientRect();
-      const cardTop = window.scrollY + rect.top;
-      const cardCenter = cardTop + rect.height / 2;
-
-      const dist = Math.abs(cardCenter - viewportCenter);
-      const norm = clamp(0, 1, dist / (window.innerHeight * 0.55));
-
-      const t = 1 - norm;
-      const ease = t * t * (3 - 2 * t); // smoothstep
-
-      const scale = gsap.utils.interpolate(BASE_SCALE, ACTIVE_SCALE, ease);
-      const opacity = gsap.utils.interpolate(0.82, 1, ease);
-      const z = Math.round(ease * 100);
-
-      gsap.set(card, { scale, opacity, zIndex: z });
-    });
-  }
+items.forEach(item => {
 
   ScrollTrigger.create({
-    start: 0,
-    end: () => document.body.scrollHeight - window.innerHeight,
-    onUpdate: updateCards
+    trigger: item,
+    start: "top center",
+    end: "bottom center",
+    scrub: true,
+    onUpdate: self => {
+      const progress = 1 - Math.abs(self.progress - 0.5) * 2;
+
+      gsap.to(item, {
+        scale: 0.9 + progress * 0.15,
+        opacity: 0.7 + progress * 0.3,
+        duration: 0.2,
+        overwrite: true
+      });
+    }
   });
 
-  updateCards();
-
-  window.addEventListener("resize", () => {
-    ScrollTrigger.refresh();
-    updateCards();
-  });
-}
+});
