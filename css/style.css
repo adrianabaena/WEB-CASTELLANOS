@@ -418,7 +418,7 @@ h3 {
 
 
 
-/* CATÁLOGO */
+/* PÁGINA DE CATÁLOGO */
 
 .catalogo-hero {
   width: 100vw;
@@ -491,4 +491,26 @@ h3 {
 
 .producto-card:hover img {
   transform: scale(1.03);
+}
+
+/* ===== FLECHAS CARRUSEL CATÁLOGO ===== */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+/* ===== SEPARAR FLECHAS DEL CARRUSEL ===== */
+
+#catalogoCarousel .carousel-control-prev {
+  left: -150px; /* ajusta este valor */
+}
+
+#catalogoCarousel .carousel-control-next {
+  right: -150px; /* ajusta este valor */
 }
