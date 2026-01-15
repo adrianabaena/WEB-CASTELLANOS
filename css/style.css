@@ -10,6 +10,15 @@
   --grey: #d8d6d2;
 }
 
+/* Variables específicas para la galería */
+:root {
+  --maxW: 1200px; /* Ancho máximo de la galería */
+  --overlap: 20px; /* Superposición entre tarjetas */
+  --baseScale: 0.96; /* Escala base de las tarjetas */
+  --activeScale: 1.07; /* Escala activa para la tarjeta central */
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra de las tarjetas */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -541,4 +550,48 @@ h3 {
 
 #catalogoCarousel .carousel-control-next {
   right: -150px; /* ajusta este valor */
+}
+
+
+/* elaboracion */
+ :root{
+  --maxW: 720px;
+  --overlap: 150px;      /* solape entre imágenes */
+  --activeScale: 1.07;   /* cuánto crece en el centro */
+  --baseScale: 0.96;     /* escala cuando no está centrada */
+  --shadow: 0 18px 50px rgba(0,0,0,.14);
+}
+
+.gallery{
+  width: min(var(--maxW), 92vw);
+  margin: 0 auto;
+  padding: 12vh 0;
+}
+
+.track{
+  position: relative;
+}
+
+.card{
+  margin: 0;
+  position: relative;
+
+  /* solape */
+  margin-top: calc(var(--overlap) * -1);
+
+  transform: scale(var(--baseScale));
+  opacity: 0.85;
+  will-change: transform, opacity;
+}
+
+.card:first-child{
+  margin-top: 0;
+}
+
+.card img{
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: var(--shadow);
+  background: #f2f2f2;
 }

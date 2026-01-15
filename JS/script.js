@@ -1,57 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Web Castellano 1920 cargada correctamente");
-});
 
+  // Safe navigation: sólo añadir el listener si los elementos existen
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.nav-menu--light');
 
-const toggle = document.querySelector('.nav-toggle');
-const menu = document.querySelector('.nav-menu--light');
-
-toggle.addEventListener('click', () => {
-  menu.classList.toggle('active');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  }
 });
 
 // carrousel historia
-(function () {
-  const imgs = document.querySelectorAll(".photo-stack__img");
-  if (!imgs.length) return;
+// --- Galería Artesanía (stack + zoom al centro) ---
+if (document.querySelector(".gallery") && window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
 
-  const stepMs = 1100;  // ritmo de aparición
-  const fadeMs = 450;   // suavidad del reset
+  const cards = gsap.utils.toArray(".gallery .card");
 
-  let i = 0;
+  const ACTIVE_SCALE =
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--activeScale")) || 1.07;
 
-  function showNext() {
-    // si ya están todas visibles, hacemos reset suave y volvemos a la 1
-    if (i >= imgs.length) {
-      // fade out rápido
-      imgs.forEach(img => {
-        img.style.transitionDuration = fadeMs + "ms";
-        img.classList.remove("is-visible");
-      });
+  const BASE_SCALE =
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--baseScale")) || 0.96;
 
-      // volvemos al inicio
-      i = 0;
+  const clamp = (min, max, v) => Math.min(max, Math.max(min, v));
 
-      // restauramos transición y continuamos
-      setTimeout(() => {
-        imgs.forEach(img => (img.style.transitionDuration = ""));
-        // arrancamos mostrando la primera otra vez
-        showNext();
-      }, fadeMs + 80);
+  // Rotación leve (opcional, estilo editorial)
+  cards.forEach((card, i) => {
+    const rot = (i % 2 === 0 ? -1 : 1) * gsap.utils.random(0.6, 1.4);
+    gsap.set(card, { rotate: rot, transformOrigin: "50% 55%" });
+  });
 
-      return;
-    }
+  function updateCards() {
+    const viewportCenter = window.scrollY + window.innerHeight / 2;
 
-    // mostrar siguiente imagen (se queda apilada)
-    imgs[i].classList.add("is-visible");
-    i++;
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardTop = window.scrollY + rect.top;
+      const cardCenter = cardTop + rect.height / 2;
 
-    setTimeout(showNext, stepMs);
+      const dist = Math.abs(cardCenter - viewportCenter);
+      const norm = clamp(0, 1, dist / (window.innerHeight * 0.55));
+
+      const t = 1 - norm;
+      const ease = t * t * (3 - 2 * t); // smoothstep
+
+      const scale = gsap.utils.interpolate(BASE_SCALE, ACTIVE_SCALE, ease);
+      const opacity = gsap.utils.interpolate(0.82, 1, ease);
+      const z = Math.round(ease * 100);
+
+      gsap.set(card, { scale, opacity, zIndex: z });
+    });
   }
 
-  // estado inicial
-  imgs.forEach(img => img.classList.remove("is-visible"));
-  i = 0;
+  ScrollTrigger.create({
+    start: 0,
+    end: () => document.body.scrollHeight - window.innerHeight,
+    onUpdate: updateCards
+  });
 
-  setTimeout(showNext, 250);
-})();
+  updateCards();
+
+  window.addEventListener("resize", () => {
+    ScrollTrigger.refresh();
+    updateCards();
+  });
+}
