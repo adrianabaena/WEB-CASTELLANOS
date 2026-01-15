@@ -595,3 +595,9 @@ h3 {
   box-shadow: var(--shadow);
   background: #f2f2f2;
 }
+
+/* ===== PREVENIR SCROLL HORIZONTAL ===== */
+
+html, body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
