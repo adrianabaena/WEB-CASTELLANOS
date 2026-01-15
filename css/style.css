@@ -75,12 +75,27 @@ h3 {
 
 /* ===== HEADER SOBRE HERO ===== */
 
+.header {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 .header--absolute {
   position: absolute;
   top: 0;
   right: 0;
   width: 50%;
   z-index: 10;
+}
+
+.header--sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .nav--hero {
@@ -98,7 +113,7 @@ h3 {
 }
 
 .nav-menu--light a {
-  color: var(--text-inverse);
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   letter-spacing: 0.1em;
@@ -131,6 +146,7 @@ h3 {
 .hero {
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
 .hero-image {
@@ -388,7 +404,7 @@ h3 {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: var(--background-brand);
+    background-color: #ffffff;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -401,20 +417,34 @@ h3 {
     transition: all 0.3s ease;
   }
 
+  .nav-menu--light a {
+    color: #000000;
+  }
+
+  .nav-menu--light a.active {
+    color: #000000;
+  }
+
   .nav-menu--light.active {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
 
+  /* Ajustes suaves para el hero en móvil manteniendo 50/50 */
   .hero {
-    flex-direction: column;
+    height: 100vh;
   }
 
-  .hero-image,
-  .hero-brand {
-    width: 100%;
-    height: 50vh;
+  .hero-image img,
+  .hero-brand img {
+    object-fit: cover;
+  }
+
+  .hero-logo {
+    width: 24vw;
+    max-width: 160px;
+    min-width: 120px;
   }
 }
 
@@ -425,6 +455,21 @@ h3 {
   background-color: #7b0f1a;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.hero-logo {
+  position: absolute;
+  left: 10%;
+  bottom: 7%;
+  z-index: 5;
+  width: 160px;
+}
+
+.hero-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hero-brand h1 {
@@ -653,7 +698,24 @@ body:not(.home) .nav-menu--light a {
 
 /* Resaltar enlace activo */
 .nav-menu--light a.active {
-  font-weight: bold;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.header--sticky .nav-menu--light a {
+  color: #000000;
+}
+
+.header--sticky .nav-menu--light a::after {
+  background-color: #000000;
+}
+
+.header--sticky .nav-menu--light a.active {
+  color: #000000;
+}
+
+.header--sticky .nav-toggle span {
+  background-color: #000000;
 }
 
 <<<<<<< HEAD

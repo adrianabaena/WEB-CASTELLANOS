@@ -26,8 +26,13 @@
   
       <ul class="nav-menu nav-menu--light">
         <li><a href="index.html"><p>Home</p></a></li>
+<<<<<<< Updated upstream
         <li><a href="catalogo.html"><p>Catálogo</p></a></li> <!-- Resaltado con clase fw-bold -->
         <li><a href="artesania.html class="fw-bold"><p>Artesanía</p></a></li>
+=======
+        <li><a href="catalogo.html"><p>Catálogo</p></a></li>
+        <li><a href="artesania.html" class="active"><p>Artesanía</p></a></li>
+>>>>>>> Stashed changes
         <li><a href="#"><p>Historia</p></a></li>
         <li class="nav-cart">
           <a href="#" aria-label="Carrito">
@@ -104,14 +109,5 @@
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Marcar el enlace activo en el menú -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const activeLink = document.querySelector(".nav-menu--light a[href='artesania.html']");
-    if (activeLink) {
-      activeLink.classList.add("active");
-    }
-  });
-</script>
 </body>
 </html>
