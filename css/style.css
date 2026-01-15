@@ -1,7 +1,7 @@
 /* ===== COSAS GENERALES ===== */
 
 :root {
-  --text-inverse: #ffffff;
+  --text-inverse: #000000; /* Cambiar texto inverso a negro */
   --color-white: #ffffff;
   --background-brand: #7b0f1a;
   --burgundy: #7b0f1a;
@@ -452,7 +452,44 @@ h3 {
   max-width: 1200px;
 }
 
+/* GIFS */
+.gif-media{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background:#f2f2f2;
+}
 
+/* Poster visible por defecto */
+.gif-poster{
+  width: 100%;
+  height: auto;
+  display:block;
+}
+
+/* Vídeo encima, oculto hasta hover */
+.gif-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+/* Al hover, mostramos el vídeo */
+.gif-card:hover .gif-video{
+  opacity: 1;
+}
+
+/* Y opcional: ocultar el poster visualmente (no hace falta, pero queda más fino) */
+.gif-card:hover .gif-poster{
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
 
 
 /* PÁGINA DE CATÁLOGO */
@@ -465,7 +502,7 @@ h3 {
 
 .catalogo-hero img {
   width: 100%;
-  height: 80%;
+  height: 70%;
   object-fit: cover;
   display: block;
 }
@@ -553,47 +590,70 @@ h3 {
 }
 
 
-/* elaboracion */
- :root{
-  --maxW: 720px;
-  --overlap: 150px;      /* solape entre imágenes */
-  --activeScale: 1.07;   /* cuánto crece en el centro */
-  --baseScale: 0.96;     /* escala cuando no está centrada */
-  --shadow: 0 18px 50px rgba(0,0,0,.14);
+/* elaboracion */.gallery{
+    width:100%;
+    min-height:200vh;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* COLUMNA */
+  .stack{
+    width:800px;
+    position:relative;
+  }
+
+  /* TARJETAS */
+  .item{
+    position:relative;
+    margin:60px auto;
+    width:60%;
+    transform:scale(0.9);
+    will-change: transform, opacity;
+    overflow:hidden;
+  }
+
+  /* VARIACIONES COLLAGE */
+  .item.left{ margin-left:0; margin-right:auto; }
+  .item.right{ margin-left:auto; margin-right:0; }
+  .item.center{ margin-left:auto; margin-right:auto; }
+
+  .item img{
+    width:100%;
+    display:block;
+    box-shadow:0 20px 60px rgba(0,0,0,.15);
+  }
+
+  /* TEXTO CENTRADO */
+  .caption{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  background:rgba(0,0,0,0.15);
+  pointer-events:none;
+}
+.caption h2{
+  margin:0;
+  color:#fff;
+
+  
+  font-weight:300;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
 }
 
-.gallery{
-  width: min(var(--maxW), 92vw);
-  margin: 0 auto;
-  padding: 12vh 0;
+/* Color del menú en negro para páginas distintas de index.html */
+body:not(.home) .nav-menu--light a {
+  color: #000000;
 }
 
-.track{
-  position: relative;
-}
-
-.card{
-  margin: 0;
-  position: relative;
-
-  /* solape */
-  margin-top: calc(var(--overlap) * -1);
-
-  transform: scale(var(--baseScale));
-  opacity: 0.85;
-  will-change: transform, opacity;
-}
-
-.card:first-child{
-  margin-top: 0;
-}
-
-.card img{
-  width: 100%;
-  height: auto;
-  display: block;
-  box-shadow: var(--shadow);
-  background: #f2f2f2;
+/* Resaltar enlace activo */
+.nav-menu--light a.active {
+  font-weight: bold;
 }
 
 <<<<<<< HEAD
