@@ -683,3 +683,39 @@ body:not(.home) .nav-menu--light a {
   background-color: var(--black);
   color: #ffffff;
 }
+
+/* ===== 3d mocasin===== */
+
+
+.mocasin3d-section {
+  min-height: 100vh;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor de la imagen */
+.frame-container {
+  max-width: 520px;
+  width: 100%;
+}
+
+/* Imagen que cambia con el scroll */
+#frame-sequence {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* MÓVIL: solo imagen fija */
+@media (max-width: 767px) {
+  .mocasin3d-section {
+    min-height: auto;
+    padding: 4rem 1rem;
+  }
+
+  .frame-container {
+    max-width: 320px;
+  }
+}
