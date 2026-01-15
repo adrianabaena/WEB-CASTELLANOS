@@ -30,18 +30,17 @@ document.querySelectorAll(".gif-card").forEach(card => {
   const video = card.querySelector(".gif-video");
   if (!video) return;
 
-  // Desktop: hover
   card.addEventListener("mouseenter", () => {
-    video.currentTime = 0;   // empieza desde el inicio
+    video.currentTime = 0;
     video.play().catch(() => {});
   });
 
   card.addEventListener("mouseleave", () => {
     video.pause();
-    video.currentTime = 0;   // vuelve al “primer frame”
+    video.currentTime = 0;
   });
 
-  // Móvil: tap para reproducir / tap fuera para parar (simple)
+  // móvil: tap
   card.addEventListener("touchstart", () => {
     if (video.paused) {
       video.currentTime = 0;
@@ -52,4 +51,3 @@ document.querySelectorAll(".gif-card").forEach(card => {
     }
   }, { passive: true });
 });
-
