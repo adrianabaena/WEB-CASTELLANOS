@@ -1,0 +1,194 @@
+:root {
+  --text-inverse: #ffffff;
+  --color-white: #ffffff;
+  --background-brand: #7b0f1a;
+  --burgundy: #7b0f1a;
+  --white: #ffffff;
+  --black: #0f0f0f;
+  --grey: #d8d6d2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+
+.layout {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===== HEADER SOBRE HERO ===== */
+
+.header--absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  z-index: 10;
+}
+
+.nav--hero {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Menú blanco */
+.nav-menu--light {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.nav-menu--light a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  position: relative;
+}
+
+/* Hover fino */
+.nav-menu--light a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-white);
+  transition: width 0.3s ease;
+}
+
+.nav-menu--light a:hover::after {
+  width: 100%;
+}
+
+/* Icono carrito */
+.nav-cart a {
+  font-size: 1.1rem;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  display: flex;
+  height: 100vh;
+}
+
+.hero-image {
+  width: 50%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== HAMBURGUESA ===== */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-white);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+
+  .header--absolute {
+    width: 100%;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu--light {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background-brand);
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+    gap: 2rem;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu--light.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-image,
+  .hero-brand {
+    width: 100%;
+    height: 50vh;
+  }
+}
+
+
+/* Marca derecha */
+.hero-brand {
+  width: 50%;
+  background-color: #7b0f1a;
+  display: flex;
+  align-items: center;
+}
+
+.hero-brand h1 {
+  color: #ffffff;
+  font-size: 4rem;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.hero-brand span {
+  font-size: 3rem;
+}
+
+/* COLECCIÓN */
+.collection {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection img {
+  width: 90%;
+  max-width: 1200px;
+}
