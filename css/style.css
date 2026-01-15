@@ -169,7 +169,7 @@ h3 {
 .historia-bg {
   position: absolute;
   inset: 0;
-  background-image: url("media/img/img_home_rojo3.jpg"); /* <-- CAMBIO AQUÍ */
+  background-image: url("../media/img/img_home_rojo3.jpg"); /* Ruta corregida */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
