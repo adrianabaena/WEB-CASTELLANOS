@@ -335,6 +335,35 @@ h3 {
   background-color: var(--color-white);
 }
 
+/* GALERIA ELABORACION */
+.gallery{
+      width: min(var(--maxW), 92vw);
+      margin: 0 auto;
+      padding: 12vh 0;
+    }
+
+    .track{
+      position: relative;
+    }
+
+    .card{
+      margin: 0;
+      position: relative;
+      margin-top: calc(var(--overlap) * -1);
+      transform: translateZ(0) scale(var(--baseScale));
+      opacity: .86;
+      will-change: transform, opacity, filter;
+    }
+    .card:first-child{ margin-top: 0; }
+
+    .card img{
+      width: 100%;
+      height: auto;
+      display:block;
+      box-shadow: var(--shadow);
+      background:#f2f2f2;
+    }
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
