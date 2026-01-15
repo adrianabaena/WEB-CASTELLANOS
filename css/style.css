@@ -1,22 +1,20 @@
 /* ===== COSAS GENERALES ===== */
 
 :root {
-  --text-inverse: #000000; /* Cambiar texto inverso a negro */
+  --text-inverse: #000000;
   --color-white: #ffffff;
   --background-brand: #7b0f1a;
   --burgundy: #7b0f1a;
   --white: #ffffff;
   --black: #0f0f0f;
   --grey: #d8d6d2;
-}
 
-/* Variables específicas para la galería */
-:root {
-  --maxW: 1200px; /* Ancho máximo de la galería */
-  --overlap: 20px; /* Superposición entre tarjetas */
-  --baseScale: 0.96; /* Escala base de las tarjetas */
-  --activeScale: 1.07; /* Escala activa para la tarjeta central */
-  --shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra de las tarjetas */
+  /* Variables específicas para la galería */
+  --maxW: 1200px;
+  --overlap: 20px;
+  --baseScale: 0.96;
+  --activeScale: 1.07;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -343,35 +341,6 @@ h3 {
   background-color: var(--color-white);
 }
 
-/* GALERIA ELABORACION */
-.gallery{
-      width: min(var(--maxW), 92vw);
-      margin: 0 auto;
-      padding: 12vh 0;
-    }
-
-    .track{
-      position: relative;
-    }
-
-    .card{
-      margin: 0;
-      position: relative;
-      margin-top: calc(var(--overlap) * -1);
-      transform: translateZ(0) scale(var(--baseScale));
-      opacity: .86;
-      will-change: transform, opacity, filter;
-    }
-    .card:first-child{ margin-top: 0; }
-
-    .card img{
-      width: 100%;
-      height: auto;
-      display:block;
-      box-shadow: var(--shadow);
-      background:#f2f2f2;
-    }
-
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
@@ -581,12 +550,14 @@ h3 {
 
 /* ===== SEPARAR FLECHAS DEL CARRUSEL ===== */
 
-#catalogoCarousel .carousel-control-prev {
-  left: -150px; /* ajusta este valor */
+#catalogoCarousel .carousel-control-prev,
+#catalogoCarouselHombre .carousel-control-prev {
+  left: -150px;
 }
 
-#catalogoCarousel .carousel-control-next {
-  right: -150px; /* ajusta este valor */
+#catalogoCarousel .carousel-control-next,
+#catalogoCarouselHombre .carousel-control-next {
+  right: -150px;
 }
 
 
@@ -656,13 +627,12 @@ body:not(.home) .nav-menu--light a {
   font-weight: bold;
 }
 
-<<<<<<< HEAD
 /* ===== PREVENIR SCROLL HORIZONTAL ===== */
 
 html, body {
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
 }
-=======
+
 /* ===== BOTÓN VER TODOS ===== */
 
 .ver-todos-wrapper {
@@ -690,4 +660,3 @@ html, body {
   background-color: var(--black);
   color: #ffffff;
 }
->>>>>>> 8c80fbb9cc3ce31b22e77b55cd4f4e78d131c96d
