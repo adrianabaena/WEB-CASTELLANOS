@@ -1,7 +1,7 @@
 /* ===== COSAS GENERALES ===== */
 
 :root {
-  --text-inverse: #ffffff;
+  --text-inverse: #000000; /* Cambiar texto inverso a negro */
   --color-white: #ffffff;
   --background-brand: #7b0f1a;
   --burgundy: #7b0f1a;
@@ -452,7 +452,44 @@ h3 {
   max-width: 1200px;
 }
 
+/* GIFS */
+.gif-media{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background:#f2f2f2;
+}
 
+/* Poster visible por defecto */
+.gif-poster{
+  width: 100%;
+  height: auto;
+  display:block;
+}
+
+/* Vídeo encima, oculto hasta hover */
+.gif-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+/* Al hover, mostramos el vídeo */
+.gif-card:hover .gif-video{
+  opacity: 1;
+}
+
+/* Y opcional: ocultar el poster visualmente (no hace falta, pero queda más fino) */
+.gif-card:hover .gif-poster{
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
 
 
 /* PÁGINA DE CATÁLOGO */
@@ -558,7 +595,6 @@ h3 {
     min-height:200vh;
     display:flex;
     justify-content:center;
-    padding:20vh 0;
   }
 
   /* COLUMNA */
@@ -570,10 +606,9 @@ h3 {
   /* TARJETAS */
   .item{
     position:relative;
-    margin:120px auto;
+    margin:60px auto;
     width:60%;
     transform:scale(0.9);
-    opacity:0.7;
     will-change: transform, opacity;
     overflow:hidden;
   }
@@ -609,4 +644,14 @@ h3 {
   font-weight:300;
   letter-spacing:0.15em;
   text-transform:uppercase;
+}
+
+/* Color del menú en negro para páginas distintas de index.html */
+body:not(.home) .nav-menu--light a {
+  color: #000000;
+}
+
+/* Resaltar enlace activo */
+.nav-menu--light a.active {
+  font-weight: bold;
 }

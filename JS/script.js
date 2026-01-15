@@ -13,25 +13,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // carrousel historia
-const items = document.querySelectorAll(".item");
+document.querySelectorAll(".gif-card").forEach(card => {
+  const video = card.querySelector(".gif-video");
+  if (!video) return;
 
-items.forEach(item => {
-
-  ScrollTrigger.create({
-    trigger: item,
-    start: "top center",
-    end: "bottom center",
-    scrub: true,
-    onUpdate: self => {
-      const progress = 1 - Math.abs(self.progress - 0.5) * 2;
-
-      gsap.to(item, {
-        scale: 0.9 + progress * 0.15,
-        opacity: 0.7 + progress * 0.3,
-        duration: 0.2,
-        overwrite: true
-      });
-    }
+  // Desktop: hover
+  card.addEventListener("mouseenter", () => {
+    video.currentTime = 0;   // empieza desde el inicio
+    video.play().catch(() => {});
   });
 
+  card.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;   // vuelve al “primer frame”
+  });
+
+  // Móvil: tap para reproducir / tap fuera para parar (simple)
+  card.addEventListener("touchstart", () => {
+    if (video.paused) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, { passive: true });
 });
+
