@@ -242,3 +242,39 @@ h3 {
   width: 90%;
   max-width: 1200px;
 }
+
+
+
+
+/* CATÁLOGO */
+
+.catalogo-hero {
+  width: 100vw;
+  height: 65vh; /* ajusta a tu gusto */
+  overflow: hidden;
+}
+
+.catalogo-hero img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  display: block;
+}
+
+.page-catalogo .catalogo-hero {
+  margin-top: 90px; /* ejemplo */
+}
+
+/* ===== NAV CATÁLOGO EN NEGRO ===== */
+
+.page-catalogo .nav-menu--light a {
+  color: var(--black);
+}
+
+.page-catalogo .nav-menu--light a::after {
+  background-color: var(--black);
+}
+
+.page-catalogo .nav-toggle span {
+  background-color: var(--black);
+}
