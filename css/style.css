@@ -278,3 +278,45 @@ h3 {
 .page-catalogo .nav-toggle span {
   background-color: var(--black);
 }
+
+/* ===== GALERÍA CATÁLOGO ===== */
+
+.producto-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.producto-img {
+  background-color: transparent; /* o directamente elimínalo */
+  padding: 0; /* opcional */
+}
+
+.producto-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.producto-marca {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  margin: 0;
+  color: var(--black);
+}
+
+.producto-desc {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.producto-img img {
+  transition: transform 0.4s ease;
+}
+
+.producto-card:hover img {
+  transform: scale(1.03);
+}
