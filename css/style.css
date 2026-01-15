@@ -700,6 +700,25 @@ body:not(.home) .nav-menu--light a {
 .nav-menu--light a.active {
   font-weight: 700;
   color: #ffffff;
+<<<<<<< Updated upstream
+=======
+}
+
+.header--sticky .nav-menu--light a {
+  color: #000000;
+}
+
+.header--sticky .nav-menu--light a::after {
+  background-color: #000000;
+}
+
+.header--sticky .nav-menu--light a.active {
+  color: #000000;
+}
+
+.header--sticky .nav-toggle span {
+  background-color: #000000;
+>>>>>>> Stashed changes
 }
 
 .header--sticky .nav-menu--light a {
