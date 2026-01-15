@@ -1,44 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASTELLANO 1920</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASTELLANO 1920</title>
 
-    <!-- BOOTSTRAP CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- BOOTSTRAP CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="CSS/styles.css">
+  <!-- TU CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <head>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    </head>
-    
-   
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Fuentes de Google (sincronizadas con index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+</head>
+
 <body>
- 
-<header>
-   
+  <header class="header header--absolute">
+  <nav class="nav nav--hero">
+
+    <ul class="nav-menu nav-menu--light">
+      <li><a href="#"><p>Home</p></a></li>
+      <li><a href="catalogo.html"><p>Catálogo</p></a></li>
+      <li><a href="artesania.html"><p>Artesanía</p></a></li>
+      <li><a href="#"><p>Historia</p></a></li>
+      <li class="nav-cart">
+        <a href="#" aria-label="Carrito">
+          👜
+        </a>
+      </li>
+    </ul>
+
+    <button class="nav-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
 </header>
 
+  <main>
+    <!-- GALERÍA (4 fotos) -->
+    <section class="gallery" id="gallery">
+      <div class="track" id="track">
+  <figure class="card"><img src="media/img/PASO1.png" alt="Paso 1 - proceso de artesanía"></figure>
+  <figure class="card"><img src="media/img/PASO2.png" alt="Paso 2 - proceso de artesanía"></figure>
+  <figure class="card"><img src="media/img/PASO3.png" alt="Paso 3 - proceso de artesanía"></figure>
+  <figure class="card"><img src="media/img/PASO4.png" alt="Paso 4 - proceso de artesanía"></figure>
+      </div>
+    </section>
+  </main>
 
-<main>
-   
-</main>
-    
-<footer>
-  
-</footer>
+  <footer></footer>
 
+  <!-- SCRIPTS (orden IMPORTANTE) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
 
-    <script src="js/jquery-3.7.1.js"></script>
-    
-    <script src="js/script.js"></script>
-
-
-    <!-- BOOTSTRAP JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+  <!-- Restaurar GSAP para animaciones -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 </body>
 </html>
