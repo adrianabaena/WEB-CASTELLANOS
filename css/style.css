@@ -596,8 +596,38 @@ h3 {
   background: #f2f2f2;
 }
 
+<<<<<<< HEAD
 /* ===== PREVENIR SCROLL HORIZONTAL ===== */
 
 html, body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+=======
+/* ===== BOTÓN VER TODOS ===== */
+
+.ver-todos-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.btn-ver-todos {
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.8rem 2.8rem;
+
+  color: var(--black);
+  text-decoration: none;
+  border: 1px solid var(--black);
+  background-color: transparent;
+
+  transition: all 0.35s ease;
+}
+
+.btn-ver-todos:hover {
+  background-color: var(--black);
+  color: #ffffff;
+}
+>>>>>>> 8c80fbb9cc3ce31b22e77b55cd4f4e78d131c96d
