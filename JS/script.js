@@ -10,40 +10,48 @@ toggle.addEventListener('click', () => {
   menu.classList.toggle('active');
 });
 
+// carrousel historia
 (function () {
-    const imgs = document.querySelectorAll(".photo-stack__img");
-    if (!imgs.length) return;
+  const imgs = document.querySelectorAll(".photo-stack__img");
+  if (!imgs.length) return;
 
-    const stepMs = 1100;     // cada cuánto aparece una nueva foto
-    const holdMs = 1200;     // pausa cuando ya han aparecido todas
-    const resetFadeMs = 350; // suavidad al resetear
+  const stepMs = 1100;  // ritmo de aparición
+  const fadeMs = 450;   // suavidad del reset
 
-    let i = 0;
+  let i = 0;
 
-    function resetStack() {
-      imgs.forEach(img => img.classList.remove("is-visible"));
+  function showNext() {
+    // si ya están todas visibles, hacemos reset suave y volvemos a la 1
+    if (i >= imgs.length) {
+      // fade out rápido
+      imgs.forEach(img => {
+        img.style.transitionDuration = fadeMs + "ms";
+        img.classList.remove("is-visible");
+      });
+
+      // volvemos al inicio
       i = 0;
-    }
 
-    function next() {
-      if (i < imgs.length) {
-        imgs[i].classList.add("is-visible");
-        i++;
-        setTimeout(next, stepMs);
-        return;
-      }
-
+      // restauramos transición y continuamos
       setTimeout(() => {
-        imgs.forEach(img => (img.style.transitionDuration = resetFadeMs + "ms"));
-        resetStack();
+        imgs.forEach(img => (img.style.transitionDuration = ""));
+        // arrancamos mostrando la primera otra vez
+        showNext();
+      }, fadeMs + 80);
 
-        setTimeout(() => {
-          imgs.forEach(img => (img.style.transitionDuration = ""));
-          next();
-        }, resetFadeMs + 80);
-      }, holdMs);
+      return;
     }
 
-    resetStack();
-    setTimeout(next, 250);
-  })();
+    // mostrar siguiente imagen (se queda apilada)
+    imgs[i].classList.add("is-visible");
+    i++;
+
+    setTimeout(showNext, stepMs);
+  }
+
+  // estado inicial
+  imgs.forEach(img => img.classList.remove("is-visible"));
+  i = 0;
+
+  setTimeout(showNext, 250);
+})();
