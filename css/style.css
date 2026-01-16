@@ -1032,3 +1032,66 @@ html, body {
     width: 100%;
   }
 }
+
+
+/* footer */
+
+/* ===== FOOTER REVEAL ===== */
+
+@import url("footer.css");
+
+.footer-reveal {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--burgundy); /* cámbialo a #000 si lo quieres negro */
+  color: #ffffff;
+  z-index: -1;              /* se queda “por detrás” del contenido */
+  padding: 5rem 2rem;
+  min-height: 50vh;         /* asegura altura para que se vea al destaparse */
+  display: flex;
+  align-items: center;
+}
+
+/* el body/layout tienen fondo claro para “tapar” el footer al hacer scroll */
+.layout,
+body {
+  background-color: #f5f5f5;
+  z-index: 1;
+  position: relative;
+}
+
+.footer-reveal h3 {
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
