@@ -102,7 +102,22 @@ if (frameElement && typeof gsap !== "undefined") {
       });
     },
     "(max-width: 767px)": function () {
-      frameElement.src = currentFrame(0);
+      gsap.to(animationState, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#mocasin3d",
+          start: "top bottom",
+          end: "top top",
+          scrub: true
+        },
+        onUpdate: () => {
+          frameElement.src = currentFrame(
+            Math.round(animationState.frame)
+          );
+        }
+      });
     }
   });
 }

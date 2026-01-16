@@ -233,6 +233,11 @@ h3 {
     display: flex;
   }
 
+  .historia-hero__inner.row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   /* 50 / 50 */
   .historia-hero__left,
   .historia-hero__right {
@@ -344,12 +349,22 @@ h3 {
   @media (max-width: 900px) {
     .historia-hero__inner {
       flex-direction: column;
+      align-items: center;
     }
 
     .historia-hero__left,
     .historia-hero__right {
       width: 100%;
       min-height: 50vh;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .photo-stack {
+      margin: 0 auto 1rem;
     }
 
     .historia-hero__text {
@@ -373,6 +388,13 @@ h3 {
   width: 22px;
   height: 2px;
   background-color: var(--color-white);
+}
+
+@media (max-width: 900px) {
+  body.artesania .nav-toggle span,
+  body.page-carrito .nav-toggle span {
+    background-color: #000000;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -573,6 +595,19 @@ h3 {
   .catalogo-hero img {
     height: auto; /* Mantiene la proporción original */
   }
+}
+
+.catalogo-heading-title {
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: 0.22em;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.catalogo-heading.py-4 {
+  padding-bottom: 3.5rem;
 }
 
 .page-catalogo .catalogo-hero {
