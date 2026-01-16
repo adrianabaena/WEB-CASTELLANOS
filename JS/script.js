@@ -91,3 +91,39 @@ if (frameElement && typeof gsap !== "undefined") {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("#historia");
+  if (!section) return;
+
+  const scrollArea = section.querySelector(".historia-scroll");
+  const imgs = section.querySelectorAll(".photo-stack__img");
+
+  // puntos de activación repartidos
+  const thresholds = Array.from({ length: imgs.length }, (_, i) =>
+    (i + 1) / (imgs.length + 1)
+  );
+
+  function updateStack() {
+    const rect = section.getBoundingClientRect();
+
+    // si está lejos de la pantalla, no hace nada
+    if (rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
+
+    const vh = window.innerHeight;
+    const scrollAreaHeight = scrollArea.offsetHeight;
+
+    const progress = Math.min(
+      1,
+      Math.max(0, (-rect.top) / (scrollAreaHeight - vh))
+    );
+
+    imgs.forEach((img, i) => {
+      img.classList.toggle("is-active", progress >= thresholds[i]);
+    });
+  }
+
+  updateStack();
+  window.addEventListener("scroll", updateStack, { passive: true });
+  window.addEventListener("resize", updateStack);
+});
