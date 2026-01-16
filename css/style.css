@@ -108,14 +108,28 @@ h3 {
   display: flex;
   gap: 3rem;
   list-style: none;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.nav-menu--light li {
+  display: flex;
+  align-items: center;
 }
 
 .nav-menu--light a {
+  display: flex;
+  align-items: center;
   color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   letter-spacing: 0.1em;
   position: relative;
+}
+
+.nav-menu--light p {
+  margin: 0;
+  line-height: 1;
 }
 
 /* Hover fino */
@@ -149,6 +163,10 @@ h3 {
 
 .hero-image {
   width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* Centra o alinea */
+  align-items: flex-end; /* Pone el contenido abajo */
 }
 
 .hero-image img {
@@ -405,6 +423,10 @@ h3 {
     height: 100vh;
   }
 
+  .hero-image {
+    position: relative;
+  }
+
   .hero-image img,
   .hero-brand img {
     object-fit: cover;
@@ -430,9 +452,31 @@ h3 {
 .hero-logo {
   position: absolute;
   left: 10%;
-  bottom: 7%;
+  bottom: 0rem;
   z-index: 5;
-  width: 200px;
+  width: clamp(260px, 60%, 520px);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start; /* Alineado a la izquierda para coincidir con la posición */
+  gap: 1rem;
+}
+
+.btn-hero {
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding: 0.8rem 2.8rem;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid var(--white);
+  background-color: transparent;
+  transition: all 0.35s ease;
+}
+
+.btn-hero:hover {
+  background-color: var(--white);
+  color: var(--background-brand);
 }
 
 .hero-logo img {
@@ -955,15 +999,17 @@ html, body {
 
 .mocasin3d-section {
   min-height: 100vh;
-  background-color: #000;
+  background-color: #d3d3d3;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 15vh;
+  padding-bottom: 5vh;
 }
 
 /* Contenedor de la imagen */
 .frame-container {
-  max-width: 520px;
+  max-width: 100%;
   width: 100%;
 }
 
@@ -982,6 +1028,7 @@ html, body {
   }
 
   .frame-container {
-    max-width: 320px;
+    max-width: 100%;
+    width: 100%;
   }
 }
