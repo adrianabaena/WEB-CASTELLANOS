@@ -61,9 +61,6 @@ document.querySelectorAll(".gif-card").forEach(card => {
 });
 
 
-// ===============================
-// SCROLL 3D MOCASÍN (GSAP)
-// ===============================
 const frameElement = document.getElementById("frame-sequence");
 
 if (frameElement && typeof gsap !== "undefined") {
@@ -84,22 +81,28 @@ if (frameElement && typeof gsap !== "undefined") {
 
   const animationState = { frame: 0 };
 
-  gsap.to(animationState, {
-    frame: frameCount - 1,
-    snap: "frame",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#mocasin3d",
-      start: "top top",
-      end: "+=2000",
-      scrub: true,
-      pin: true
-      // markers: true // ← descomenta SOLO si quieres debug
+  ScrollTrigger.matchMedia({
+    "(min-width: 768px)": function () {
+      gsap.to(animationState, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#mocasin3d",
+          start: "top top",
+          end: "+=2000",
+          scrub: true,
+          pin: true
+        },
+        onUpdate: () => {
+          frameElement.src = currentFrame(
+            Math.round(animationState.frame)
+          );
+        }
+      });
     },
-    onUpdate: () => {
-      frameElement.src = currentFrame(
-        Math.round(animationState.frame)
-      );
+    "(max-width: 767px)": function () {
+      frameElement.src = currentFrame(0);
     }
   });
 }
